@@ -5,7 +5,7 @@
 ---
 
 ## Reel 1 — "Right Back"
-**Canva:** https://www.canva.com/d/DAHQQxFsbHU
+**Canva:** https://www.canva.com/d/uJEO534hmJGonYr
 
 **Background:** Little girl in lavender dress standing at window with blue bunny, looking out at dusk
 
@@ -26,7 +26,7 @@ She was 3. She waited by that window every night. 💔 #ThroughTaylorsTears #Chi
 ---
 
 ## Reel 2 — "I Waited"
-**Canva:** https://www.canva.com/d/DAHQQ7Tp8YU
+**Canva:** https://www.canva.com/d/zj4quM_cpFOl7G7
 
 **Background:** Little girl sitting alone on bleachers in an empty school gymnasium
 
@@ -48,7 +48,7 @@ Every child of an addict has a "waiting" memory. This was mine. 💔 #ThroughTay
 ---
 
 ## Reel 3 — "Grandma Came With A Bag"
-**Canva:** https://www.canva.com/d/DAHQQ4gBI3g
+**Canva:** https://www.canva.com/d/G6bRxeEune5DdNH
 
 **Background:** Little girl with blue bunny in warm living room setting
 
@@ -70,7 +70,7 @@ Every child of an addict has a "waiting" memory. This was mine. 💔 #ThroughTay
 ---
 
 ## Reel 4 — "I Drew You A Picture"
-**Canva:** https://www.canva.com/d/DAHQQw9f1Gg
+**Canva:** https://www.canva.com/d/jDWZF1TF82jjBpb
 
 **Background:** Crayon drawing — "i luv u mommy" with stick figures of little girl with blue bunny and mommy
 
