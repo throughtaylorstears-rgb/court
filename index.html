@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Through Taylor's Tears</title>
+  <meta name="description" content="For everyone whose life has been touched by addiction. Through Taylor's Tears is a space for children of addicts, families, and those still waiting.">
+  <meta property="og:title" content="Through Taylor's Tears">
+  <meta property="og:description" content="For everyone whose life has been touched by addiction.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://throughtaylorstears.com">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAF5F2;
+      --bg-alt: #F0E5DF;
+      --bg-hero: #211210;
+      --surface: #FFFFFF;
+      --rose: #B8736A;
+      --rose-mid: #C9887E;
+      --rose-light: #E0B8B0;
+      --rose-pale: #F5E4DF;
+      --ink: #1E1210;
+      --text: #3A2320;
+      --text-mid: #6B4A47;
+      --text-light: #9A7A77;
+      --divider: #D4C0BB;
+      --hero-text: #F5E4DF;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #180D0B;
+        --bg-alt: #221410;
+        --bg-hero: #0E0705;
+        --surface: #2A1714;
+        --rose: #C9887E;
+        --rose-mid: #D49D94;
+        --rose-light: #5C3430;
+        --rose-pale: #2E1816;
+        --ink: #F5E4DF;
+        --text: #E8D4CF;
+        --text-mid: #C0998F;
+        --text-light: #8A6864;
+        --divider: #3D2520;
+        --hero-text: #F5E4DF;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #180D0B;
+      --bg-alt: #221410;
+      --bg-hero: #0E0705;
+      --surface: #2A1714;
+      --rose: #C9887E;
+      --rose-mid: #D49D94;
+      --rose-light: #5C3430;
+      --rose-pale: #2E1816;
+      --ink: #F5E4DF;
+      --text: #E8D4CF;
+      --text-mid: #C0998F;
+      --text-light: #8A6864;
+      --divider: #3D2520;
+      --hero-text: #F5E4DF;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #FAF5F2;
+      --bg-alt: #F0E5DF;
+      --bg-hero: #211210;
+      --surface: #FFFFFF;
+      --rose: #B8736A;
+      --rose-mid: #C9887E;
+      --rose-light: #E0B8B0;
+      --rose-pale: #F5E4DF;
+      --ink: #1E1210;
+      --text: #3A2320;
+      --text-mid: #6B4A47;
+      --text-light: #9A7A77;
+      --divider: #D4C0BB;
+      --hero-text: #F5E4DF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--bg-hero);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.75rem, 5vw, 2.75rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 25% 65%, rgba(184,115,106,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .wordmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201,136,126,0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 1;
+      max-width: 840px;
+    }
+
+    .hero-voice {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2.1rem, 5.5vw, 4.4rem);
+      font-weight: normal;
+      font-style: italic;
+      color: var(--hero-text);
+      line-height: 1.28;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-voice .line {
+      display: block;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .hero-voice .line:nth-child(1) { animation-delay: 0.25s; }
+    .hero-voice .line:nth-child(2) { animation-delay: 0.7s; }
+    .hero-voice .line:nth-child(3) { animation-delay: 1.15s; }
+    .hero-voice .line:nth-child(4) { animation-delay: 1.6s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-voice .line { opacity: 1; transform: none; animation: none; }
+      .hero-resolve { opacity: 1; animation: none; }
+    }
+
+    .hero-resolve {
+      margin-top: clamp(2rem, 4vw, 3rem);
+      opacity: 0;
+      animation: appear 0.8s ease 2.3s forwards;
+    }
+
+    @keyframes appear { to { opacity: 1; } }
+
+    .hero-awareness {
+      font-size: clamp(0.88rem, 1.8vw, 1.05rem);
+      color: rgba(201,136,126,0.85);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .scroll-cue {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(201,136,126,0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 1.8rem;
+      background: currentColor;
+    }
+
+    /* ── STAT ── */
+    .stat-section {
+      background: var(--bg-alt);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.75rem, 5vw, 3rem);
+    }
+
+    .stat-number {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(5.5rem, 20vw, 14rem);
+      font-weight: normal;
+      color: var(--rose);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .stat-label {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+      font-style: italic;
+      color: var(--text);
+      max-width: 500px;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-coda {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border-top: 1px solid var(--divider);
+      padding-top: 1rem;
+      max-width: 400px;
+    }
+
+    /* ── MISSION ── */
+    .mission-wrap {
+      background: var(--surface);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.75rem, 5vw, 3rem);
+    }
+
+    .mission-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .mission-grid { grid-template-columns: 180px 1fr; gap: 5rem; }
+    }
+
+    .eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      padding-top: 0.3rem;
+    }
+
+    .mission-body h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.65rem, 3.5vw, 2.5rem);
+      font-weight: normal;
+      color: var(--ink);
+      line-height: 1.32;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+      margin-bottom: 1.75rem;
+    }
+
+    .mission-body p {
+      color: var(--text-mid);
+      max-width: 60ch;
+      margin-bottom: 1.1rem;
+      font-size: 1.05rem;
+      line-height: 1.78;
+    }
+
+    .mission-body p:last-child { margin-bottom: 0; }
+
+    /* ── SERIES ── */
+    .series-section {
+      background: var(--bg-alt);
+      padding: clamp(4rem, 8vw, 6rem) clamp(1.75rem, 5vw, 3rem);
+    }
+
+    .series-header {
+      max-width: 960px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cards-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--divider);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: border-color 0.18s;
+    }
+
+    .card:hover { border-color: var(--rose-light); }
+
+    .card-tag {
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    .card-quote {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.97rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--bg-hero);
+      padding: clamp(5rem, 12vw, 9rem) clamp(1.75rem, 5vw, 3rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 50% 50%, rgba(184,115,106,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .cta-inner .eyebrow { color: rgba(201,136,126,0.7); }
+
+    .cta-headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+      color: var(--hero-text);
+      font-weight: normal;
+      font-style: italic;
+      line-height: 1.28;
+      text-wrap: balance;
+    }
+
+    .cta-sub {
+      font-size: 0.97rem;
+      color: rgba(245,228,223,0.55);
+      max-width: 44ch;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--rose);
+      color: var(--hero-text);
+      text-decoration: none;
+      padding: 0.88rem 2.1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.18s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: var(--rose-mid); }
+    .btn-primary:focus-visible { outline: 2px solid var(--rose-light); outline-offset: 3px; }
+
+    /* ── RESOURCES ── */
+    .resources-wrap {
+      background: var(--surface);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.75rem, 5vw, 3rem);
+    }
+
+    .resources-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .resources-grid { grid-template-columns: 180px 1fr; gap: 5rem; }
+    }
+
+    .resources-body h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: normal;
+      color: var(--ink);
+      line-height: 1.4;
+      text-wrap: balance;
+      margin-bottom: 2.25rem;
+    }
+
+    .resource-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .resource-item {
+      border-left: 2px solid var(--rose-light);
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .resource-name {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+
+    .resource-desc {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .resource-link {
+      font-size: 0.83rem;
+      color: var(--rose);
+      text-decoration: none;
+      font-weight: 500;
+      align-self: flex-start;
+    }
+
+    .resource-link:hover { text-decoration: underline; }
+    .resource-link:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--divider);
+      padding: clamp(2rem, 5vw, 2.75rem) clamp(1.75rem, 5vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 580px) {
+      footer { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+
+    .footer-brand {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <p class="wordmark">Through Taylor's Tears</p>
+
+    <div class="hero-body">
+      <p class="hero-voice">
+        <span class="line">You said you'd be right back.</span>
+        <span class="line">But you didn't come back.</span>
+        <span class="line">Not that night.</span>
+        <span class="line">Not for a lot of nights.</span>
+      </p>
+      <div class="hero-resolve">
+        <p class="hero-awareness">
+          Addiction doesn't just hurt the one who is using.<br>
+          This space is for everyone whose life has been touched by it.
+        </p>
+      </div>
+    </div>
+
+    <span class="scroll-cue">Scroll</span>
+  </section>
+
+  <section class="stat-section">
+    <p class="stat-number" aria-label="1 in 4">1 in 4</p>
+    <p class="stat-label">children in the United States grow up with a parent who has a substance use disorder.</p>
+    <p class="stat-coda">That wasn't a statistic to me. That was my entire classroom.</p>
+  </section>
+
+  <section class="mission-wrap">
+    <div class="mission-grid">
+      <p class="eyebrow">The mission</p>
+      <div class="mission-body">
+        <h2>Nobody talked about what it does to a child.<br>I'm talking about it now.</h2>
+        <p>Through Taylor's Tears exists for the children who counted the nights, for the grandparents who weren't supposed to start over, for the aunts and neighbors and teachers who showed up when no one else did.</p>
+        <p>This is a space built on the belief that every wound — including the ones nobody sees — deserves to be named. That the silence that was demanded of us does not have to last forever.</p>
+        <p>You belong here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="series-section">
+    <div class="series-header">
+      <p class="eyebrow">From the series</p>
+    </div>
+    <div class="cards-grid">
+      <article class="card">
+        <p class="card-tag">The Count</p>
+        <blockquote class="card-quote">"Your child counted the nights you didn't come home. They just never told you."</blockquote>
+      </article>
+      <article class="card">
+        <p class="card-tag">The First Rule</p>
+        <blockquote class="card-quote">"Every child of an addict learns one rule before they learn to read: Don't. Talk. About. It."</blockquote>
+      </article>
+      <article class="card">
+        <p class="card-tag">They Know</p>
+        <blockquote class="card-quote">"They understood everything. They just protected you from knowing that they knew."</blockquote>
+      </article>
+      <article class="card">
+        <p class="card-tag">Rooting For You</p>
+        <blockquote class="card-quote">"Your child is already rooting for you — even if they can't show it. Anger is not the opposite of love."</blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="eyebrow">Follow along</p>
+      <h2 class="cta-headline">Stories told the way they were always meant to be heard.</h2>
+      <p class="cta-sub">New content every week — raw, real, and for everyone whose life has been shaped by addiction.</p>
+      <a href="https://www.tiktok.com/@throughtaylorstears" class="btn-primary" target="_blank" rel="noopener">
+        Follow on TikTok
+      </a>
+    </div>
+  </section>
+
+  <section class="resources-wrap">
+    <div class="resources-grid">
+      <p class="eyebrow" style="padding-top:0.3rem;">Resources</p>
+      <div class="resources-body">
+        <h2>If you or someone you love is struggling, help is available right now.</h2>
+        <ul class="resource-list">
+          <li class="resource-item">
+            <span class="resource-name">SAMHSA National Helpline</span>
+            <span class="resource-desc">Free, confidential, 24/7 treatment referral and information for individuals and families.</span>
+            <a href="tel:1-800-662-4357" class="resource-link">1-800-662-4357</a>
+          </li>
+          <li class="resource-item">
+            <span class="resource-name">Adult Children of Alcoholics &amp; Dysfunctional Families</span>
+            <span class="resource-desc">A 12-step fellowship for adults who grew up in alcoholic or dysfunctional homes.</span>
+            <a href="https://adultchildren.org" class="resource-link" target="_blank" rel="noopener">adultchildren.org</a>
+          </li>
+          <li class="resource-item">
+            <span class="resource-name">Al-Anon Family Groups</span>
+            <span class="resource-desc">Support for families and friends of people with a drinking or drug problem.</span>
+            <a href="https://al-anon.org" class="resource-link" target="_blank" rel="noopener">al-anon.org</a>
+          </li>
+          <li class="resource-item">
+            <span class="resource-name">ACE Score — CDC</span>
+            <span class="resource-desc">Learn about Adverse Childhood Experiences and how they may have shaped you. Knowledge is the beginning of healing.</span>
+            <a href="https://www.cdc.gov/violenceprevention/aces/index.html" class="resource-link" target="_blank" rel="noopener">cdc.gov/aces</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-brand">Through Taylor's Tears</span>
+    <span class="footer-note">throughtaylorstears.com &mdash; For everyone whose life has been touched by addiction.</span>
+  </footer>
+
+</body>
+</html>
